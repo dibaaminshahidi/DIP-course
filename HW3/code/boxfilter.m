@@ -1,0 +1,20 @@
+clc;
+clear all, 
+im = imread('face.jpg');
+gray = rgb2gray(im);
+box3x3=imboxfilt(gray,3);
+box5x5=imboxfilt(gray,5);
+box7x7=imboxfilt(gray,7);
+box9x9=imboxfilt(gray,9);
+temp = gray - box3x3;
+unsh3 = gray + temp;
+temp = gray - box5x5;
+unsh5 = gray + temp;
+temp = gray - box7x7;
+unsh7 = gray + temp;
+temp = gray - box9x9;
+unsh9 = gray + temp;
+imwrite(unsh3,'box3.jpg');
+imwrite(unsh5,'box5.jpg');
+imwrite(unsh7,'box7.jpg');
+imwrite(unsh9,'box9.jpg');
